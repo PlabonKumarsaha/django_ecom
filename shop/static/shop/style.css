@@ -2,3 +2,14 @@ body{
     background-color: red;
 
 }
+
+.card-text{
+    color: green;
+    font-weight : 800;
+}
+
+.card-title{
+    color: black;
+    font-weight: bold;
+    font-weight: 900;
+}
