@@ -54,16 +54,16 @@
 <ul class="pagination">
 {% if product_objects.has_previous %}
     <li class="page-item">
-        <a href="?page={{ product_objects.previous_page_number}}">previous</a>
+        <a class="page-link" href="?page={{ product_objects.previous_page_number}}">previous</a>
     </li>
     {% endif %}
  <li class="page-item active">
-        <a href="?page={{ product_objects.number}}">current</a>
+        <a class="page-link" href="?page={{ product_objects.number}}">current</a>
     </li>
 
 {% if product_objects.has_next %}
      <li class="page-item">
-        <a href="?page={{ product_objects.next_page_number}}">next</a>
+        <a class="page-link" href="?page={{ product_objects.next_page_number}}">next</a>
     </li>
     {% endif %}
 </ul>
