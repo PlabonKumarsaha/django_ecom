@@ -33,7 +33,11 @@
         <a class="nav-link" href="#">Features</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="cart" href="#">cart(0)</a>
+          <button id="cart" type="button"  class="btn btn-secondary"
+                  data-container="body" data-html="true" data-toggle="popover" data-placement="bottom"
+                  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+    cart(0)
+</button>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="#">Disabled</a>
@@ -131,10 +135,16 @@ $(document).on('click','.atc',function (){
     document.getElementById("cart").innerHTML = "cart("+Object.keys("cart").length+")";
 
     // number of im in cart object
-    console.log(Object.keys("cart").length);
-
+    //console.log(Object.keys("cart").length);
 
 });
+
+$("[data-toggle=popover]").popover();
+document.getElementById("cart").setAttribute('data-content',"<h5>This is your cart</h5>");
+//$(function () {
+ // $("[data-toggle=popover]").popover();
+  //document.getElementById("cart").setAttribute('data-content','<h1>This is your cart</h1>');
+//});
 </script>
 </html>
 
