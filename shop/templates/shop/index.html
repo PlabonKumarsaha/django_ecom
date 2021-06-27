@@ -111,7 +111,7 @@
 </body>
 
 
-<script type="text/javascript">
+<script type="text/javascript" >
 // creating a cart object .. localStorage is a buildin thing
 if(localStorage.getItem('cart') == null){
     var cart ={};
@@ -126,9 +126,15 @@ $(document).on('click','.atc',function (){
    console.log(item_id)
 
     if(cart[item_id]!= undefined){
-       cart[item_id] = cart[item_id] + 1;
+        quantity = cart[item_id][0]+1;
+
+       cart[item_id][0] = quantity;
     }else{
-        cart[item_id] =1;
+       // cart[item_id] =1;
+        quantity =1;
+        name = document.getElementById("nm"+item_id).innerHTML;
+        cart[item_id]=[quantity,name];
+
     }
     console.log("cart   "+cart);
    // localStorage.setItem('cart',JSON.stringify(cart));
@@ -137,9 +143,7 @@ $(document).on('click','.atc',function (){
     // number of im in cart object
     //console.log(Object.keys("cart").length);
 
-});
-
-displayCart(cart);
+    displayCart(cart);
 //document.getElementById("cart").setAttribute('data-content',"<h5>This is your cart</h5>");
 function displayCart(cart){
     var cartString = "";
@@ -147,7 +151,7 @@ function displayCart(cart){
     var cartIndex = 1;
     for(var x in cart){
         cartString+=cartIndex;
-        cartString += document.getElementById("nm"+x).innerHTML + "Qty :"+cart[x];
+        cartString += document.getElementById("nm"+x).innerHTML + "Qty :"+cart[x][0];
         console.log("cartstring"+cartString.toString());
         cartIndex +=1;
     }
@@ -157,9 +161,9 @@ function displayCart(cart){
 
 }
 
-    document.getElementById("cart").setAttribute('data-content','<h5>This is your cart item </h5>');
+    //document.getElementById("cart").setAttribute('data-content','<h5>This is your cart item </h5>');
 
-
+});
 
 </script>
 </html>
