@@ -35,7 +35,7 @@
       <li class="nav-item">
           <button id="cart" type="button"  class="btn btn-secondary"
                   data-container="body" data-html="true" data-toggle="popover" data-placement="bottom"
-                  data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                 >
     cart(0)
 </button>
       </li>
@@ -69,7 +69,7 @@
             <div class="card">
             <img src="{{ product.image }}" class="card-img-top">
             <div class="card-body">
-                <div class="card-title">
+                <div id="nm{{ product.id }}" class="card-title">
                     {{ product.title }}
                 </div>
                 <div class="card-text">
@@ -130,8 +130,8 @@ $(document).on('click','.atc',function (){
     }else{
         cart[item_id] =1;
     }
-    console.log(cart);
-    localStorage.setItem('cart',JSON.stringify(cart));
+    console.log("cart   "+cart);
+   // localStorage.setItem('cart',JSON.stringify(cart));
     document.getElementById("cart").innerHTML = "cart("+Object.keys("cart").length+")";
 
     // number of im in cart object
@@ -139,12 +139,28 @@ $(document).on('click','.atc',function (){
 
 });
 
-$("[data-toggle=popover]").popover();
-document.getElementById("cart").setAttribute('data-content',"<h5>This is your cart</h5>");
-//$(function () {
- // $("[data-toggle=popover]").popover();
-  //document.getElementById("cart").setAttribute('data-content','<h1>This is your cart</h1>');
-//});
+displayCart(cart);
+//document.getElementById("cart").setAttribute('data-content',"<h5>This is your cart</h5>");
+function displayCart(cart){
+    var cartString = "";
+    cartString += "<h5>This is your cart</h5>";
+    var cartIndex = 1;
+    for(var x in cart){
+        cartString+=cartIndex;
+        cartString += document.getElementById("nm"+x).innerHTML + "Qty :"+cart[x];
+        console.log("cartstring"+cartString.toString());
+        cartIndex +=1;
+    }
+    cartString+="<a href='/checkout'><button class='btn btn-warning' id='checkout'>checkout</button>";
+    document.getElementById("cart").setAttribute('data-content',cartString);
+    $("[data-toggle=popover]").popover();
+
+}
+
+    document.getElementById("cart").setAttribute('data-content','<h5>This is your cart item </h5>');
+
+
+
 </script>
 </html>
 
