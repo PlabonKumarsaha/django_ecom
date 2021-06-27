@@ -8,3 +8,9 @@ class Products(models.Model) :
     category = models.CharField(max_length=200)
     description = models.TextField()
     image = models.CharField(max_length=300)
+
+class Oder(models.Model):
+    title = models.CharField(max_length=200)
+    price = models.FloatField()
+    disc_price = models.FloatField()
+
