@@ -21,12 +21,12 @@ def detail(request,id):
     return render(request, 'shop/detail.html',{'product_objects': product_objects})
 def checkout(request):
     if request.method == 'POST':
+        items = request.POST.get('items','')
         name = request.POST.get('name',"");
         email = request.POST.get('email',"");
         address = request.POST.get('address',"");
         city = request.POST.get('city',"");
-
-    orders = Oder(name=name, email =email, address = address, city = city);
-    orders.save()
+        orders = Oder(items=items,name=name, email =email, address = address, city = city);
+        orders.save()
 
     return render(request,'shop/checkout.html')

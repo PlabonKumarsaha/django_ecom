@@ -1,4 +1,6 @@
 from django.apps import AppConfig
+from .models import Products
+from .models import Oder
 
 
 class ShopConfig(AppConfig):

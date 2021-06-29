@@ -13,4 +13,5 @@ class Oder(models.Model):
     title = models.CharField(max_length=200)
     price = models.FloatField()
     disc_price = models.FloatField()
+    total =models.CharField(max_length=200)
 
